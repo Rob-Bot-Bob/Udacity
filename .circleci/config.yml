@@ -6,17 +6,17 @@ jobs:
    print-hello:
       docker:
          - image: circleci/node:13.8.0
-           auth:
-             username: mydockerhub-user
-             password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+           #auth:
+             #username: mydockerhub-user
+             #password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
       steps:
          - run: echo "Hello"
    print-world:
       docker:
          - image: circleci/node:13.8.0
-           auth:
-             username: mydockerhub-user
-             password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+           #auth:
+            # username: mydockerhub-user
+            # password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
       steps:
          - run: echo "World"
 workflows:
