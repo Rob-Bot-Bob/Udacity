@@ -1,23 +1,18 @@
 version: 2.1
-commands: # a reusable command with parameters
-   greeting:
-      parameters:
-         to:
-           default: "world"
-           type: string
-      steps:
-         - run: echo "Hello <<parameters.to>>"
+orbs:
+  # Declare a dependency on the welcome-orb
+  welcome: circleci/welcome-orb@0.4.1
 jobs:
-   my-job:
+   print-hello:
       docker:
-         - image: cimg/base:stable
+         - image: circleci/node:13.8.0
            auth:
              username: mydockerhub-user
              password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
       steps:
-         - greeting:
-            to: "My-Name"
+         - run: echo "Hello"
 workflows:
    my-workflow:
       jobs:
-         - my-job
+         - print-hello
+         - welcome/run
