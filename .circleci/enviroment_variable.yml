@@ -1,5 +1,5 @@
 version: 2.1
-#all good
+#test of version 2
 workflows:
   test-env-vars:
     jobs:
