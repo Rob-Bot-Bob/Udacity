@@ -15,3 +15,29 @@ jobs:
           name: "echo an env var that is part of our project"
           command: |
             echo $MY_ENV_VAR
+
+version: 2.1
+jobs:
+   print-hello:
+      docker:
+         - image: circleci/node:13.8.0
+           #auth:
+             #username: mydockerhub-user
+             #password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+      steps:
+         - run: echo "Hello"
+   print-world:
+      docker:
+         - image: circleci/node:13.8.0
+           #auth:
+            # username: mydockerhub-user
+            # password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+      steps:
+         - run: echo "World"
+workflows:
+   my-workflow:
+      jobs:
+         - print-hello
+         - print-world:
+              requires:
+                - print-hello
