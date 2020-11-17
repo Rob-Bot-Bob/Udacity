@@ -8,14 +8,14 @@ jobs:
     steps: 
       - checkout
       - 
-        run:
-          name: "Ensure backend infrastructure exist" 
+        run: 
           command: |
-          pwd
-          ls -la
+              pwd
+              ls -la
               aws cloudformation deploy \
                 --template-file circleci/template.yml \
                 --stack-name my-stack
+          name: "Ensure backend infrastructure exist"
 workflows: 
   my_workflow: 
     jobs: 
