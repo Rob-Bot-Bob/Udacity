@@ -13,7 +13,7 @@ jobs:
               pwd
               ls -la
               aws cloudformation deploy \
-                --template-file circleci/template.yml \
+                --template-file template.yml \
                 --stack-name my-stack
           name: "Ensure backend infrastructure exist"
 workflows: 
